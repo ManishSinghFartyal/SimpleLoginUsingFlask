@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+{% block body %}
+<div class="row">
+
+<div class="row">
+	<h1 class="text-center">Hi@</h1>
+</div>
+<div class="row">
+	<div class="col-lg-6">
+		<h4>User ID : </h4>
+	</div>
+	<div class="col-lg-6">
+		<h4>{{userid}}</h4>
+	</div>
+	<div class="col-lg-6">
+    	<h4>Username : </h4>
+	</div>
+	<div class="col-lg-6">
+		<h4>{{user['Name']}}</h4>
+	</div>  
+	<div class="col-lg-6">
+		<h4>Password : </h4>
+	</div>
+	<div class="col-lg-6">
+		<h4>{{user['Password']}}</h4>
+	</div>
+	<div class="col-lg-6">
+		<h4>Contact : </h4>
+	</div>
+	<div class="col-lg-6">
+		<h4>{{user['Contact']}}</h4>
+	</div>
+	<div class="col-lg-6">
+		<h4>Address : </h4>
+	</div>
+	<div class="col-lg-6">
+		<h4>{{user['Address']}}</h4>
+	</div>  
+	</div>
+</div>
+</div>
+{% endblock %}

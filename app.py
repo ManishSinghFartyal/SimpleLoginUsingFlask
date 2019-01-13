@@ -1,8 +1,9 @@
-from flask import Flask,render_template,request,url_for,redirect
+from flask import Flask,render_template,request,url_for,redirect,session
 from tests import service
+from tests import user_service as uservice
 
 app = Flask(__name__)
-
+app.secret_key = 'Manish'
 @app.route("/")
 def index():
 	return render_template("home.html")
@@ -13,6 +14,15 @@ def about():
 	return render_template("About.html")
 
 
+@app.route("/profile")
+def profile():
+	if 'userid' in session:
+		userid = session['userid']
+		online_user=uservice.get_user(userid)
+		return render_template("profile.html",user=online_user,userid=userid)
+	else:
+		return redirect(url_for('login'))
+
 
 @app.route("/register")
 def register():
@@ -20,8 +30,7 @@ def register():
 
 
 @app.route("/register_user",methods=['GET','POST'])
-def register_user():
-	
+def register_user():	
 	if request.method == 'POST':
 		username = request.form['un']
 		fullname=request.form['fn']
@@ -43,7 +52,8 @@ def login_user():
 		result= service.check_login(username,password)
 		print(result)
 		if result == True:
-			return render_template("home.html")	
+			session['userid']=username
+			return redirect(url_for("profile"))	
 		else:
 			return redirect(url_for("about"))
 	else:
