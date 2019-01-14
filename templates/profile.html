@@ -4,42 +4,61 @@
 
 <div class="row">
 	<h1 class="text-center">Hi@</h1>
+	<hr>
 </div>
 <div class="row">
-	<div class="col-lg-6">
-		<h4>User ID : </h4>
+<div class="col-lg-6">
+	<div class="row">
+		<div class="col-lg-6">
+			<h4>User ID : </h4>
+		</div>
+		<div class="col-lg-6">
+			<h4>{{userid}}</h4>
+		</div>
+		<div class="col-lg-6">
+	    	<h4>Username : </h4>
+		</div>
+		<div class="col-lg-6">
+			<h4>{{user['Name']}}</h4>
+		</div>  
+		<div class="col-lg-6">
+			<h4>Password : </h4>
+		</div>
+		<div class="col-lg-6">
+			<h4>{{user['Password']}}</h4>
+		</div>
+		<div class="col-lg-6">
+			<h4>Contact : </h4>
+		</div>
+		<div class="col-lg-6">
+			<h4>{{user['Contact']}}</h4>
+		</div>
+		<div class="col-lg-6">
+			<h4>Address : </h4>
+		</div>
+		<div class="col-lg-6">
+			<h4>{{user['Address']}}</h4>
+		</div>
+		<div class="col-lg-6">
+			<h4>Click <a href="/logout">here</a> to logout.</h4>
+		</div>    
 	</div>
-	<div class="col-lg-6">
-		<h4>{{userid}}</h4>
+</div>
+<div class="col-lg-6">
+	<div class="row text-center">
+		<h3 style="background: rgba(10,10,10,0.3);color: blue;font-weight: bolder;">Your quotes</h3>
 	</div>
-	<div class="col-lg-6">
-    	<h4>Username : </h4>
+	<div class="row text-center">		
+		{% if user.get('Articles',None) == None %}
+		<h5>No Quotes yet.</h5>	
+		{% endif %}
 	</div>
-	<div class="col-lg-6">
-		<h4>{{user['Name']}}</h4>
-	</div>  
-	<div class="col-lg-6">
-		<h4>Password : </h4>
+	<div class="row">
+		<a href="/quote">Post a quote!!!!!!!!</a>
+	</div>	
 	</div>
-	<div class="col-lg-6">
-		<h4>{{user['Password']}}</h4>
-	</div>
-	<div class="col-lg-6">
-		<h4>Contact : </h4>
-	</div>
-	<div class="col-lg-6">
-		<h4>{{user['Contact']}}</h4>
-	</div>
-	<div class="col-lg-6">
-		<h4>Address : </h4>
-	</div>
-	<div class="col-lg-6">
-		<h4>{{user['Address']}}</h4>
-	</div>
-	<div class="col-lg-6">
-		<h4>Click <a href="/logout">here</a> to logout.</h4>
-	</div>    
-	</div>
+</div>
+</div>
 </div>
 </div>
 {% endblock %}

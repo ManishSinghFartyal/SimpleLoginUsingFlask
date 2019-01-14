@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+{% block body %}
+<form action="/newquote" method="post">
+  <div class="row jumbotron">
+  	<div class="col-lg-12">
+  		<label for="title">Title</label>
+  		<input type="text" id="title" name="title" style="margin-left: 50px; width: 500px; border-radius: 10px;">		
+  	 </div>
+  	 <div class="col-lg-12">
+ 		<label for="quote" class="label label-primary top-left">Enter you Quote</label>
+  		<textarea id="quote" name="quote" rows=15 cols=90 style=" border-radius: 10px;">	
+  		</textarea>	
+  	 </div>
+  	 <div class="col-lg-12">
+  	 	<button class="btn btn-success btn-lg" type="submit">Submit</button>  	 	
+  	 </div>
+  </div>  
+ </form>
+{% endblock %}

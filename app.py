@@ -26,7 +26,10 @@ def profile():
 
 @app.route("/register")
 def register():
-	return render_template("register.html")
+	if 'userid' in session:
+		return redirect(url_for('profile'))
+	else:
+		return render_template("register.html")
 
 
 @app.route("/register_user",methods=['GET','POST'])
@@ -68,10 +71,30 @@ def login():
 	else:
 		return render_template("login.html")
 
+@app.route("/quote")
+def quote():
+	if 'userid' in session:		
+		return render_template("quotes.html")
+	else:
+		return render_template("login.html")
+
 @app.route("/logout")
 def logout():
 	session.clear()
 	return redirect(url_for('index'))
+
+@app.route("/newquote",methods=['GET','POST'])
+def newquote():
+	if 'userid' in session:
+		if request.method =='POST':
+			title = request.form['title']
+			quote = request.form['quote']
+			uservice.insert_quote(title,quote,session['userid'])
+			return redirect(url_for('profile'))
+		else:
+			return redirect(url_for('index'))
+	else:
+		return redirect(url_for('index'))
 
 if __name__=='__main__':
 	app.run()
