@@ -61,7 +61,17 @@ def login_user():
 
 @app.route("/login")
 def login():
-	return render_template("login.html")
+	if 'userid' in session:
+		userid = session['userid']
+		online_user=uservice.get_user(userid)
+		return render_template("profile.html",user=online_user,userid=userid)
+	else:
+		return render_template("login.html")
+
+@app.route("/logout")
+def logout():
+	session.clear()
+	return redirect(url_for('index'))
 
 if __name__=='__main__':
 	app.run()
