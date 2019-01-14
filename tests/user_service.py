@@ -13,7 +13,6 @@ def insert_quote(title,quote,user_id):
 	if doc.get('Articles',None) is None:
 		print(doc)
 		table1.update_one({'_id':user_id},{'$push':{'Articles':[{'article_id':1,'title':title,'quote':quote}]}})
-		#doc["Articles"]=[(1,title,quote)]
 	else:
 		length =len(doc["Articles"])
 		length +=1
