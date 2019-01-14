@@ -38,6 +38,7 @@
 		</div>
 		<div class="col-lg-6">
 			<h4>{{user['Address']}}</h4>
+
 		</div>
 		<div class="col-lg-6">
 			<h4>Click <a href="/logout">here</a> to logout.</h4>
@@ -53,12 +54,12 @@
 		<h5>No Quotes yet.</h5>	
 		{% else %}
 		 {% for article in user['Articles'] %}
-		 {{article['title']}}
+		 <br><a class="btn-link" href="#">{{article['title']}}</a>		 
 		 {% endfor %}		
 		{% endif %}
 	</div>
 	<div class="row">
-		<a href="/quote">Post a quote!!!!!!!!</a>
+		<a href="/quote" style="font-size: 25px;background: rgba(44,55,66,0.7);border-radius: 5px;">Post a quote!!!!!!!!</a>
 	</div>	
 	</div>
 </div>
