@@ -1,6 +1,10 @@
 import tests.User as user
+import pymongo
+import tests.db as db
 def get_user(user_id):
-	online_user = user.user_details[user_id]
-	return online_user
-
-print(get_user("Manish123"))
+	table=db.get_db()
+	doc=table.find_one({'_id':user_id})
+	print(doc)
+	return doc
+	
+get_user("Saurabh123")

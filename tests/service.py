@@ -1,24 +1,25 @@
 import tests.User as user
+import tests.db as db
+import pymongo
 
 def check_login(username,password):
-	if username in user.user_details:
-		if password == user.user_details[username]['Password']:
-			return True
-		else:
-			return False
-	else:
+	print(username,"  ",password)
+	table =db.get_db()
+	doc = table.find_one({"_id":username,"Password":password})
+	if doc is None:
 		return False
+	else:
+		return True
 
 def register_user(userid,username,password,address,contact):
-	new_user = {
-	userid:
-		{
+	new_user ={
+		"_id":userid,
 		"Name":username,
 		"Password":password,
 		"Contact":contact,
 		"Address":address
 		}
-	}
 	print(new_user)
-	user.user_details.update(new_user)
-	print(user.user_details)
+	table=db.get_db()	
+	x=table.insert_one(new_user)
+	print(x.inserted_id)
