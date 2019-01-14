@@ -10,6 +10,7 @@ def get_user(user_id):
 
 def insert_quote(title,quote,user_id):
 	doc=table1.find_one({'_id':user_id})
+	print(doc)
 	if doc.get('Articles',None) is None:
 		print(doc)
 		table1.update_one({'_id':user_id},{'$push':{'Articles':{'article_id':1,'title':title,'quote':quote}}})
