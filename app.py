@@ -101,5 +101,11 @@ def read_quote(article_id):
 	article = uservice.get_article(article_id,session['userid'])
 	return render_template("ReadArticle.html",article=article)
 
+
+@app.route("/all_quotes")
+def all_quotes():
+	if 'userid' in session:
+		uservice.get_all_quotes(session['userid'])
+
 if __name__=='__main__':
 	app.run()

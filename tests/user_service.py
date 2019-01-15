@@ -29,3 +29,6 @@ def get_article(article_id,user_id):
 			print(article)
 			return article
 	return None
+
+def get_all_quotes():
+	doc=table1.find()	
