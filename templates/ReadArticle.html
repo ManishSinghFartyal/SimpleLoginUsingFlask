@@ -1,20 +1,29 @@
 {% extends 'layout.html' %}
 {% block body %}
- <div class="jumbotron">
- 	<div class="row"> 		
- 			<div class="row">
- 				<h3 style="background: rgba(30,30,200,0.3); font-family: 'Gill Sans';border-radius: 5px;">Title:{{article['title']}}</h3> 	
+ <div class="jumbotron text-center">
+ 	<div class="row text-center"> 		
+ 			<div class="col-lg-12">
+ 				<div class="col-lg-12">
+ 					<h2 style="background: rgba(30,30,200,0.8); font-family:Gill Sans;border-radius: 5px;">Title:</h2> 	
+ 				</div>
+ 				<div class="col-lg-12">
+ 					<h5 style="background: rgba(30,30,200,0.8); font-family:Gill Sans;border-radius: 5px;">{{article['title']}}</h5> 	
+ 				</div>
+ 				
  			</div> 		
- 		<div class="col-lg-10">
- 			<div class="row">
+ 		<div class="col-lg-12">
+ 			<div class="col-lg-12 text-center">
  				<h3 style="background: rgba(130,130,200,0.7); font-family: Gill Sans;border-radius: 5px;">Quote</h3> 	
  			</div>
- 			<div class="row">
- 				<p class="lead">
+ 			<div class="col-lg-12 text-center">
+ 				<p class="lead text-center">
  					{{article['quote']}}
  				</p>
  			</div>
  		</div>
  	</div>
+ </div>
+ <div class="row">
+ 	<a href="/profile">Go Back</a>
  </div>
 {% endblock %}
