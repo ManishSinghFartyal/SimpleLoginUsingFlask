@@ -96,5 +96,10 @@ def newquote():
 	else:
 		return redirect(url_for('index'))
 
+@app.route("/read_quote/<article_id>")
+def read_quote(article_id):
+	article = uservice.get_article(article_id,session['userid'])
+	return render_template("ReadArticle.html",article=article)
+
 if __name__=='__main__':
 	app.run()

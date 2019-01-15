@@ -19,4 +19,13 @@ def insert_quote(title,quote,user_id):
 		length +=1
 		table1.update_one({'_id':user_id},{'$push':{'Articles':{'article_id':length,'title':title,'quote':quote}}})
 
-
+def get_article(article_id,user_id):
+	id_article=int(article_id)
+	doc=table1.find_one({'_id':user_id})	
+	articles =doc['Articles']
+	for article in articles:
+		print(article['article_id']," ",article_id)
+		if article['article_id'] == id_article:
+			print(article)
+			return article
+	return None
